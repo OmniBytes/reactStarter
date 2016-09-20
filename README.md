@@ -63,3 +63,4 @@ npm run gh
 3. Sync / git-push
 4.  Create Pull Request
 5. Assign reviewer
+6. *IF REVIEWER - review file changes, make comments / merge
