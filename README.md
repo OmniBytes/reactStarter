@@ -39,6 +39,9 @@ Optional Install: [Atom](https://atom.io/)
 ```bash
 cd dirName
 npm install
+npm install -g webpack
+npm install -g webpack-dev-server
+npm install -g gh-pages
 
 ```
 
