@@ -31,8 +31,8 @@ Optional Install: [Atom](https://atom.io/)
 ## Getting Started
 * Create New Repo
 * Pull down this repo
-	* Copy everything into new repo
-	* Change name and rep url in packages.json
+	* Copy everything into new repo except /.git
+	* Change name and repo url in packages.json
 
 #### In Terminal/Powershell/Bash:
 
