@@ -34,10 +34,9 @@ Optional Install: [Atom](https://atom.io/)
 	* Copy everything into new repo except /.git
 	* Change name and repo url in packages.json
 
-#### In Terminal/Powershell/Bash:
+#### In Terminal/Powershell/Bash(left click repo in Git Desktop >> 'open in git shell'):
 
 ```bash
-cd dirName
 npm install
 npm install -g webpack
 npm install -g webpack-dev-server
@@ -50,9 +49,17 @@ npm install -g gh-pages
 npm start
 ```
 [localhost:8080/webpack-dev-server/#](http://localhost:8080/webpack-dev-server/#)
+* changes will update automatically
 
 ## Deploying to gh-pages
 ```bash
 npm run gh
 ```
 * may have to delete /node_modules/gh-pages/.cache if url mismatch error occurs
+
+## Git Workflow
+1. Make changes on dev branch
+2. Commit changes to dev branch
+3. Sync / git-push
+4.  Create Pull Request
+5. Assign reviewer
