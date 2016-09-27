@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
+import TopNavbar from './top_navbar';
+import SideNavbar from './side_navbar';
+
 export default class App extends Component {
     render() {
         return (
             <div>
-                React simple starter
-                <br />
-                <Link to="/">Home</Link>
-                <br />
-                <Link to="/one">One</Link>
-                { this.props.children }
+                <TopNavbar />
+
+                <div className="container-fluid">
+
+                    <div className="row">
+
+                        <SideNavbar />
+
+                        <div className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+                            { this.props.children }
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-    );
+        );
     }
 }

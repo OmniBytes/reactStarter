@@ -4,6 +4,6 @@ export default class One extends Component {
     render() {
         return (
             <div>One page</div>
-    );
+        );
     }
 }
