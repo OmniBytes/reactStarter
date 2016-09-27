@@ -29753,7 +29753,7 @@
 
 
 	// module
-	exports.push([module.id, "#app {\n    margin-top: 5%;\n}\n\n.main {\n    background-color: white;\n    padding: 20px;\n    float: left;\n    position: relative;\n}\n\n.row {\n    height: 100vh;\n}\n\n.sidebar {\n    background-color: #e5e5e5;\n    display: block;\n    position: fixed;\n    top: 51px;\n    bottom: 0;\n    left: 0;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto;\n}\n", ""]);
+	exports.push([module.id, "#app {\n    margin-top: 50px;\n    background-color: whitesmoke;\n}\n\n.main {\n    background-color: white;\n    padding: 20px;\n    float: left;\n    position: relative;\n    background-color: whitesmoke;\n}\n\n.row {\n    height: 100vh;\n}\n\n.sidebar {\n    background-color: #eee;\n    display: block;\n    position: fixed;\n    top: 51px;\n    bottom: 0;\n    left: 0;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto;\n}\n", ""]);
 
 	// exports
 

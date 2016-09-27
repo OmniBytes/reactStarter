@@ -1,5 +1,6 @@
 #app {
     margin-top: 50px;
+    background-color: whitesmoke;
 }
 
 .main {
@@ -7,6 +8,7 @@
     padding: 20px;
     float: left;
     position: relative;
+    background-color: whitesmoke;
 }
 
 .row {
@@ -14,7 +16,7 @@
 }
 
 .sidebar {
-    background-color: #e5e5e5;
+    background-color: #eee;
     display: block;
     position: fixed;
     top: 51px;
