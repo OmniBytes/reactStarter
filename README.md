@@ -56,6 +56,7 @@ npm start
 npm run test
 ```
 * tests are located in /test directory
+* npm run dev will run tests and webpack simultaneously
 
 ## Deploying to gh-pages
 ```bash

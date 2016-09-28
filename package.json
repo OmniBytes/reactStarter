@@ -8,7 +8,8 @@
     "prod": "webpack -p",
     "gh": "webpack && gh-pages -d dist",
     "tester" : "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test" : "npm run tester -- --watch"
+    "test" : "npm run tester -- --watch",
+    "dev" : "npm run start & npm run test"
   },
   "author": "mfunk@mafunk.info",
   "repository": {
