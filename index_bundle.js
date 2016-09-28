@@ -79,7 +79,7 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _style = __webpack_require__(297);
+	var _style = __webpack_require__(298);
 
 	var _style2 = _interopRequireDefault(_style);
 
@@ -29382,11 +29382,11 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _home = __webpack_require__(268);
+	var _home = __webpack_require__(291);
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _one = __webpack_require__(269);
+	var _one = __webpack_require__(292);
 
 	var _one2 = _interopRequireDefault(_one);
 
@@ -29421,7 +29421,7 @@
 
 	var _top_navbar2 = _interopRequireDefault(_top_navbar);
 
-	var _side_navbar = __webpack_require__(267);
+	var _side_navbar = __webpack_require__(290);
 
 	var _side_navbar2 = _interopRequireDefault(_side_navbar);
 
@@ -29490,6 +29490,14 @@
 
 	var _reactRouter = __webpack_require__(173);
 
+	var _reactRedux = __webpack_require__(236);
+
+	var _actions = __webpack_require__(267);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29508,6 +29516,29 @@
 	    }
 
 	    _createClass(TopNavbar, [{
+	        key: 'authButton',
+	        value: function authButton() {
+	            var _this2 = this;
+
+	            if (this.props.authenticated) {
+	                return _react2.default.createElement(
+	                    'button',
+	                    { onClick: function onClick() {
+	                            return _this2.props.authenticate(false);
+	                        }, className: 'btn btn-primary pull-xs-right' },
+	                    'Sign Out'
+	                );
+	            }
+
+	            return _react2.default.createElement(
+	                'button',
+	                { onClick: function onClick() {
+	                        return _this2.props.authenticate(true);
+	                    }, className: 'btn btn-primary pull-xs-right' },
+	                'Sign In'
+	            );
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -29518,6 +29549,7 @@
 	                    { to: '/', className: 'navbar-brand' },
 	                    'ProjectName'
 	                ),
+	                this.authButton(),
 	                _react2.default.createElement(
 	                    'form',
 	                    { className: 'pull-xs-right' },
@@ -29530,7 +29562,11 @@
 	    return TopNavbar;
 	}(_react.Component);
 
-	exports.default = TopNavbar;
+	function mapStateToProps(state) {
+	    return { authenticated: state.authenticated };
+	}
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(TopNavbar);
 
 /***/ },
 /* 267 */
@@ -29539,288 +29575,20 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(173);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SideNavbar = function (_Component) {
-	    _inherits(SideNavbar, _Component);
-
-	    function SideNavbar() {
-	        _classCallCheck(this, SideNavbar);
-
-	        return _possibleConstructorReturn(this, (SideNavbar.__proto__ || Object.getPrototypeOf(SideNavbar)).apply(this, arguments));
-	    }
-
-	    _createClass(SideNavbar, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-3 col-md-2 sidebar' },
-	                _react2.default.createElement(
-	                    'ul',
-	                    { className: 'nav nav-sidebar' },
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/' },
-	                            'Home'
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'li',
-	                        null,
-	                        _react2.default.createElement(
-	                            _reactRouter.Link,
-	                            { to: '/one' },
-	                            'Page one'
-	                        )
-	                    )
-	                )
-	            );
-	        }
-	    }]);
-
-	    return SideNavbar;
-	}(_react.Component);
-
-	exports.default = SideNavbar;
-
-/***/ },
-/* 268 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Home = function (_Component) {
-	    _inherits(Home, _Component);
-
-	    function Home() {
-	        _classCallCheck(this, Home);
-
-	        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
-	    }
-
-	    _createClass(Home, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                'Home page'
-	            );
-	        }
-	    }]);
-
-	    return Home;
-	}(_react.Component);
-
-	exports.default = Home;
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _comment_box = __webpack_require__(270);
-
-	var _comment_box2 = _interopRequireDefault(_comment_box);
-
-	var _comment_list = __webpack_require__(294);
-
-	var _comment_list2 = _interopRequireDefault(_comment_list);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var One = function (_Component) {
-	  _inherits(One, _Component);
-
-	  function One() {
-	    _classCallCheck(this, One);
-
-	    return _possibleConstructorReturn(this, (One.__proto__ || Object.getPrototypeOf(One)).apply(this, arguments));
-	  }
-
-	  _createClass(One, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_comment_box2.default, null),
-	        _react2.default.createElement(_comment_list2.default, null)
-	      );
-	    }
-	  }]);
-
-	  return One;
-	}(_react.Component);
-
-	exports.default = One;
-
-/***/ },
-/* 270 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(236);
-
-	var _actions = __webpack_require__(271);
-
-	var actions = _interopRequireWildcard(_actions);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var CommentBox = function (_Component) {
-	  _inherits(CommentBox, _Component);
-
-	  function CommentBox(props) {
-	    _classCallCheck(this, CommentBox);
-
-	    var _this = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this, props));
-
-	    _this.state = { comment: '' };
-	    return _this;
-	  }
-
-	  _createClass(CommentBox, [{
-	    key: 'handleChange',
-	    value: function handleChange(event) {
-	      this.setState({ comment: event.target.value });
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-
-	      event.preventDefault();
-
-	      this.props.saveComment(this.state.comment);
-
-	      this.setState({ comment: '' });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'form',
-	        { onSubmit: this.handleSubmit.bind(this), className: 'comment-box' },
-	        _react2.default.createElement(
-	          'h4',
-	          null,
-	          'Add a comment'
-	        ),
-	        _react2.default.createElement('textarea', {
-	          value: this.state.comment,
-	          onChange: this.handleChange.bind(this) }),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'button',
-	            { action: 'submit' },
-	            'Submit Comment'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return CommentBox;
-	}(_react.Component);
-
-	exports.default = (0, _reactRedux.connect)(null, actions)(CommentBox);
-
-/***/ },
-/* 271 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.SAVE_COMMENT = undefined;
+	exports.CHANGE_AUTH = exports.SAVE_COMMENT = undefined;
 	exports.saveComment = saveComment;
+	exports.authenticate = authenticate;
 
-	var _axios = __webpack_require__(272);
+	var _axios = __webpack_require__(268);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var SAVE_COMMENT = exports.SAVE_COMMENT = 'save_comment';
+	var CHANGE_AUTH = exports.CHANGE_AUTH = 'change_auth';
 
 	var API_KEY = '';
 	var ROOT_URL = '';
@@ -29833,21 +29601,29 @@
 	  };
 	}
 
+	function authenticate(isLoggedIn) {
+
+	  return {
+	    type: CHANGE_AUTH,
+	    payload: isLoggedIn
+	  };
+	}
+
 /***/ },
-/* 272 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(273);
+	module.exports = __webpack_require__(269);
 
 /***/ },
-/* 273 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
-	var bind = __webpack_require__(275);
-	var Axios = __webpack_require__(276);
+	var utils = __webpack_require__(270);
+	var bind = __webpack_require__(271);
+	var Axios = __webpack_require__(272);
 
 	/**
 	 * Create an instance of Axios
@@ -29883,7 +29659,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(293);
+	axios.spread = __webpack_require__(289);
 
 	module.exports = axios;
 
@@ -29892,12 +29668,12 @@
 
 
 /***/ },
-/* 274 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var bind = __webpack_require__(275);
+	var bind = __webpack_require__(271);
 
 	/*global toString:true*/
 
@@ -30197,7 +29973,7 @@
 
 
 /***/ },
-/* 275 */
+/* 271 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30214,17 +29990,17 @@
 
 
 /***/ },
-/* 276 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(277);
-	var utils = __webpack_require__(274);
-	var InterceptorManager = __webpack_require__(279);
-	var dispatchRequest = __webpack_require__(280);
-	var isAbsoluteURL = __webpack_require__(291);
-	var combineURLs = __webpack_require__(292);
+	var defaults = __webpack_require__(273);
+	var utils = __webpack_require__(270);
+	var InterceptorManager = __webpack_require__(275);
+	var dispatchRequest = __webpack_require__(276);
+	var isAbsoluteURL = __webpack_require__(287);
+	var combineURLs = __webpack_require__(288);
 
 	/**
 	 * Create a new instance of Axios
@@ -30305,13 +30081,13 @@
 
 
 /***/ },
-/* 277 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
-	var normalizeHeaderName = __webpack_require__(278);
+	var utils = __webpack_require__(270);
+	var normalizeHeaderName = __webpack_require__(274);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -30383,12 +30159,12 @@
 
 
 /***/ },
-/* 278 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	module.exports = function normalizeHeaderName(headers, normalizedName) {
 	  utils.forEach(headers, function processHeader(value, name) {
@@ -30401,12 +30177,12 @@
 
 
 /***/ },
-/* 279 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -30459,13 +30235,13 @@
 
 
 /***/ },
-/* 280 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(274);
-	var transformData = __webpack_require__(281);
+	var utils = __webpack_require__(270);
+	var transformData = __webpack_require__(277);
 
 	/**
 	 * Dispatch a request to the server using whichever adapter
@@ -30506,10 +30282,10 @@
 	    adapter = config.adapter;
 	  } else if (typeof XMLHttpRequest !== 'undefined') {
 	    // For browsers use XHR adapter
-	    adapter = __webpack_require__(282);
+	    adapter = __webpack_require__(278);
 	  } else if (typeof process !== 'undefined') {
 	    // For node use HTTP adapter
-	    adapter = __webpack_require__(282);
+	    adapter = __webpack_require__(278);
 	  }
 
 	  return Promise.resolve(config)
@@ -30541,12 +30317,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 281 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	/**
 	 * Transform the data for a request or a response
@@ -30567,18 +30343,18 @@
 
 
 /***/ },
-/* 282 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(274);
-	var settle = __webpack_require__(283);
-	var buildURL = __webpack_require__(286);
-	var parseHeaders = __webpack_require__(287);
-	var isURLSameOrigin = __webpack_require__(288);
-	var createError = __webpack_require__(284);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(289);
+	var utils = __webpack_require__(270);
+	var settle = __webpack_require__(279);
+	var buildURL = __webpack_require__(282);
+	var parseHeaders = __webpack_require__(283);
+	var isURLSameOrigin = __webpack_require__(284);
+	var createError = __webpack_require__(280);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(285);
 
 	module.exports = function xhrAdapter(config) {
 	  return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -30672,7 +30448,7 @@
 	    // This is only done if running in a standard browser environment.
 	    // Specifically not if we're in a web worker, or react-native.
 	    if (utils.isStandardBrowserEnv()) {
-	      var cookies = __webpack_require__(290);
+	      var cookies = __webpack_require__(286);
 
 	      // Add xsrf header
 	      var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -30736,12 +30512,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 283 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var createError = __webpack_require__(284);
+	var createError = __webpack_require__(280);
 
 	/**
 	 * Resolve or reject a Promise based on response status.
@@ -30767,12 +30543,12 @@
 
 
 /***/ },
-/* 284 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var enhanceError = __webpack_require__(285);
+	var enhanceError = __webpack_require__(281);
 
 	/**
 	 * Create an Error with the specified message, config, error code, and response.
@@ -30790,7 +30566,7 @@
 
 
 /***/ },
-/* 285 */
+/* 281 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30815,12 +30591,12 @@
 
 
 /***/ },
-/* 286 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -30889,12 +30665,12 @@
 
 
 /***/ },
-/* 287 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	/**
 	 * Parse headers into an object
@@ -30932,12 +30708,12 @@
 
 
 /***/ },
-/* 288 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31006,7 +30782,7 @@
 
 
 /***/ },
-/* 289 */
+/* 285 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31048,12 +30824,12 @@
 
 
 /***/ },
-/* 290 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(274);
+	var utils = __webpack_require__(270);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -31107,7 +30883,7 @@
 
 
 /***/ },
-/* 291 */
+/* 287 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31127,7 +30903,7 @@
 
 
 /***/ },
-/* 292 */
+/* 288 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31145,7 +30921,7 @@
 
 
 /***/ },
-/* 293 */
+/* 289 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31176,6 +30952,276 @@
 	  };
 	};
 
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(173);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SideNavbar = function (_Component) {
+	    _inherits(SideNavbar, _Component);
+
+	    function SideNavbar() {
+	        _classCallCheck(this, SideNavbar);
+
+	        return _possibleConstructorReturn(this, (SideNavbar.__proto__ || Object.getPrototypeOf(SideNavbar)).apply(this, arguments));
+	    }
+
+	    _createClass(SideNavbar, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-3 col-md-2 sidebar' },
+	                _react2.default.createElement(
+	                    'ul',
+	                    { className: 'nav nav-sidebar' },
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/' },
+	                            'Home'
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: '/one' },
+	                            'Page one'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SideNavbar;
+	}(_react.Component);
+
+	exports.default = SideNavbar;
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Home = function (_Component) {
+	    _inherits(Home, _Component);
+
+	    function Home() {
+	        _classCallCheck(this, Home);
+
+	        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	    }
+
+	    _createClass(Home, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                'Home page'
+	            );
+	        }
+	    }]);
+
+	    return Home;
+	}(_react.Component);
+
+	exports.default = Home;
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _comment_box = __webpack_require__(293);
+
+	var _comment_box2 = _interopRequireDefault(_comment_box);
+
+	var _comment_list = __webpack_require__(294);
+
+	var _comment_list2 = _interopRequireDefault(_comment_list);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var One = function (_Component) {
+	  _inherits(One, _Component);
+
+	  function One() {
+	    _classCallCheck(this, One);
+
+	    return _possibleConstructorReturn(this, (One.__proto__ || Object.getPrototypeOf(One)).apply(this, arguments));
+	  }
+
+	  _createClass(One, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_comment_box2.default, null),
+	        _react2.default.createElement(_comment_list2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return One;
+	}(_react.Component);
+
+	exports.default = One;
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(236);
+
+	var _actions = __webpack_require__(267);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CommentBox = function (_Component) {
+	  _inherits(CommentBox, _Component);
+
+	  function CommentBox(props) {
+	    _classCallCheck(this, CommentBox);
+
+	    var _this = _possibleConstructorReturn(this, (CommentBox.__proto__ || Object.getPrototypeOf(CommentBox)).call(this, props));
+
+	    _this.state = { comment: '' };
+	    return _this;
+	  }
+
+	  _createClass(CommentBox, [{
+	    key: 'handleChange',
+	    value: function handleChange(event) {
+	      this.setState({ comment: event.target.value });
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+
+	      event.preventDefault();
+
+	      this.props.saveComment(this.state.comment);
+
+	      this.setState({ comment: '' });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'form',
+	        { onSubmit: this.handleSubmit.bind(this), className: 'comment-box' },
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          'Add a comment'
+	        ),
+	        _react2.default.createElement('textarea', {
+	          value: this.state.comment,
+	          onChange: this.handleChange.bind(this) }),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { action: 'submit' },
+	            'Submit Comment'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CommentBox;
+	}(_react.Component);
+
+	exports.default = (0, _reactRedux.connect)(null, actions)(CommentBox);
 
 /***/ },
 /* 294 */
@@ -31234,11 +31280,16 @@
 
 	var _comments2 = _interopRequireDefault(_comments);
 
+	var _authentication = __webpack_require__(297);
+
+	var _authentication2 = _interopRequireDefault(_authentication);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var rootReducer = (0, _redux.combineReducers)({
 
-	  comments: _comments2.default
+	  comments: _comments2.default,
+	  authenticated: _authentication2.default
 	});
 
 	exports.default = rootReducer;
@@ -31266,7 +31317,7 @@
 	  return state;
 	};
 
-	var _index = __webpack_require__(271);
+	var _index = __webpack_require__(267);
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -31274,13 +31325,39 @@
 /* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? false : arguments[0];
+	  var action = arguments[1];
+
+
+	  switch (action.type) {
+
+	    case _index.CHANGE_AUTH:
+	      return action.payload;
+	  }
+
+	  return state;
+	};
+
+	var _index = __webpack_require__(267);
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(298);
+	var content = __webpack_require__(299);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(300)(content, {});
+	var update = __webpack_require__(301)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -31297,21 +31374,21 @@
 	}
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(299)();
+	exports = module.exports = __webpack_require__(300)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "#app {\n    margin-top: 50px;\n    background-color: whitesmoke;\n}\n\n.main {\n    background-color: white;\n    padding: 20px;\n    float: left;\n    position: relative;\n    background-color: whitesmoke;\n}\n\n.row {\n    height: 100vh;\n}\n\n.sidebar {\n    background-color: #eee;\n    display: block;\n    position: fixed;\n    top: 51px;\n    bottom: 0;\n    left: 0;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto;\n}\n", ""]);
+	exports.push([module.id, "#app {\n    margin-top: 50px;\n    background-color: whitesmoke;\n}\n\n.main {\n    background-color: white;\n    padding: 20px;\n    float: left;\n    position: relative;\n    background-color: whitesmoke;\n}\n\n.row {\n    height: 100vh;\n}\n\n.sidebar {\n    background-color: #eee;\n    display: block;\n    position: fixed;\n    top: 51px;\n    bottom: 0;\n    left: 0;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto;\n}\n\n.btn {\n    margin-left: 5px;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports) {
 
 	/*
@@ -31367,7 +31444,7 @@
 
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
