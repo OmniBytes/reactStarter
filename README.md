@@ -22,11 +22,11 @@ Optional Install: [Atom](https://atom.io/)
 	* [git-plus](https://atom.io/packages/git-plus)
  	* [merge-conflicts](https://atom.io/packages/merge-conflicts)
  	* [autocomplete-modules](https://atom.io/packages/autocomplete-modules)
-	* [react](https://atom.io/packages/react)
  	* [language-babel](https://atom.io/packages/language-babel)
 	* [atom-beautify](https://atom.io/packages/atom-beautify)
  	* [auto-detect-indentation](https://atom.io/packages/auto-detect-indentation)
 	* [todo-show](https://atom.io/packages/todo-show)
+	* [platformio-ide-terminal](https://atom.io/packages/platformio-ide-terminal)
 
 ## Getting Started
 * Create New Repo
