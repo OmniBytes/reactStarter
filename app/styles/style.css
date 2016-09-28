@@ -26,3 +26,7 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.btn {
+    margin-left: 5px;
+}
