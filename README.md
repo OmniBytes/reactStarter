@@ -51,6 +51,12 @@ npm start
 [localhost:8080/webpack-dev-server/#](http://localhost:8080/webpack-dev-server/#)
 * changes will update automatically
 
+## Testing
+```bash
+npm run test
+```
+* tests are located in /test directory
+
 ## Deploying to gh-pages
 ```bash
 npm run gh
